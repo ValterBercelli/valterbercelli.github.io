@@ -1,59 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <title>Projetos</title>
-  <style>
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-    th, td {
-      border: 1px solid #ccc;
-      padding: 8px;
-      text-align: left;
-    }
-    tr:nth-child(even) {
-      background-color: #f2f2f2; /* linhas pares destacadas */
-    }
-    th {
-      background-color: #333;
-      color: white;
-    }
-  </style>
-</head>
-<body>
-  <h1>Lista de Projetos</h1>
-  <table id="tabelaProjetos"></table>
+  <head>
+    <meta charset="UTF-8">
+    <title>Projetos</title>
+  </head>
+  <body>
+    <h1>Lista de Projetos</h1>
+    <table id="tabelaProjetos"></table>
 
-  <script>
-    async function carregarProjetos() {
-      const response = await fetch("projetos.json"); // lê JSON atualizado
-      const data = await response.json();
+    <!-- Botão para voltar ao index -->
+    <a href="index.html" class="btn-voltar">⬅ Voltar à Página Principal</a>
 
-      const tabela = document.getElementById("tabelaProjetos");
-
-      // Cabeçalho: pega chaves do primeiro objeto
-      const cabecalho = Object.keys(data[0]);
-      let thead = "<tr>";
-      cabecalho.forEach(col => {
-        thead += `<th>${col}</th>`;
-      });
-      thead += "</tr>";
-      tabela.innerHTML = thead;
-
-      // Linhas
-      data.forEach(item => {
-        let linha = "<tr>";
-        cabecalho.forEach(col => {
-          linha += `<td>${item[col]}</td>`;
-        });
-        linha += "</tr>";
-        tabela.innerHTML += linha;
-      });
-    }
-
-    carregarProjetos();
-  </script>
-</body>
+  </body>
 </html>

@@ -16,6 +16,14 @@
     "TecnicasUtilizadas": "Utilização de variáveis; Conceito aleatório; Utilização de imagens; Animação CSS"
   },
   {
+    "NomeDoProjeto": "JogoDeDados-2JRnk",
+    "DescricaoDoProjeto": "Jogo de dados",
+    "Objetivo": "Pedagógico",
+    "Finalidade": "Ensinar lógica de programação com HTML, CSS e JS",
+    "Linguagens": "HTML, CSS, JS",
+    "TecnicasUtilizadas": "Utilização de variáveis; Conceito aleatório; Utilização de imagens; Animação CSS; Persistencia em Local Storage"
+  },
+  {
     "NomeDoProjeto": "JoKenPo",
     "DescricaoDoProjeto": "Jogo \"Papel, Tesoura e Pedra\"",
     "Objetivo": "Pedagógico",
