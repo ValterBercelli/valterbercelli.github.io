@@ -1,9 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
   async function carregarProjetos() {
+    const tabela = document.getElementById("tabelaProjetos");
+    if (!tabela) return; // só monta se existir a tabela
+
     const response = await fetch("projetos.json");
     const data = await response.json();
-
-    const tabela = document.getElementById("tabelaProjetos");
 
     // Cabeçalho
     const cabecalho = Object.keys(data[0]);
@@ -25,9 +26,19 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     tbody += "</tbody>";
 
-    // Junta tudo
     tabela.innerHTML = thead + tbody;
   }
 
   carregarProjetos();
+
+  // Alternância de tema
+  const toggleBtn = document.getElementById("toggle-theme");
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      toggleBtn.textContent = document.body.classList.contains("dark-mode")
+        ? "☀️ Modo Claro"
+        : "🌙 Modo Escuro";
+    });
+  }
 });
