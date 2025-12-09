@@ -57,12 +57,12 @@ section h2
   transition: transform 0.2s ease, color 0.2s ease;
   transform-origin: left center;
 }
+
 section h2:hover
 {
   color: #000000;          /* mesma cor do menu */
   transform: scale(1.1);   /* zoom 10% */
 }
-
 
 table
 {
@@ -78,15 +78,24 @@ th, td
   text-align: left;
 }
 
-tr:nth-child(even)
-{
-  background-color: #f2f2f2; /* linhas pares destacadas */
-}
-
 th
 {
   background-color: #333;
   color: white;
+}
+
+tr
+{
+  background-color: #f2f2f2;
+}
+
+tr:nth-child(even)
+{
+  background-color: #e0e0e0; /* linhas pares destacadas */
+}
+
+tr:hover {
+  background-color: #d0d0d0;
 }
 
 .btn-voltar
