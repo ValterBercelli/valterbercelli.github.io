@@ -1,18 +1,25 @@
 /* ===========================
    Padrão: escuro
    =========================== */
-body {
+body
+{
+  height: 100vh;
+  width: 100vw;
   font-family: Arial, sans-serif;
   margin: 0;
   background: #121212;
   color: #e0e0e0;
 }
 
-header, footer {
+header, footer
+{
+  height: 25vh;
+  width: 100vw;
   background: #1f1f1f;
   color: #fff;
   padding: 1rem;
   text-align: center;
+  display: flex;
 }
 
 nav {
@@ -245,4 +252,91 @@ body.light-mode .form-contato button {
 
 body.light-mode .form-contato button:hover {
   background-color: #555;
+}
+
+.circulo {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background-image: url('ArvoreDaVida.jpg'); /* substitua pelo caminho da imagem */
+  background-size: cover;      /* cobre todo o círculo */
+  background-position: center; /* centraliza a imagem */
+  border: 4px solid var(--borda-circulo);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 5%;
+  box-sizing: border-box;
+}
+
+.elipse
+{
+  width: 70%;
+  aspect-ratio: 2 / 1;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 10px;
+  outline-width: 1px;
+}
+
+.elipse p
+{
+  color: #ffd700;
+    text-shadow: 
+    2px 2px 0 black,
+   -2px 2px 0 black,
+    2px -2px 0 black,
+   -2px -2px 0 black;
+}
+
+.visitas
+{
+  height: 25vh;
+  width: 15vw;
+}
+
+.cabecalho
+{
+  height: 25vh;
+  width: 85vw;
+}
+
+.circuloPla
+{
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background-image: url('BERCELLI.png'); /* substitua pelo caminho da imagem */
+  background-size: cover;      /* cobre todo o círculo */
+  background-position: center; /* centraliza a imagem */
+  border: 4px solid var(--borda-circulo);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 5%;
+  box-sizing: border-box;
+}
+
+.circuloCon
+{
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background-image: url('BERCELLI.png'); /* substitua pelo caminho da imagem */
+  background-size: cover;      /* cobre todo o círculo */
+  background-position: center; /* centraliza a imagem */
+  border: 4px solid var(--borda-circulo);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 5%;
+  box-sizing: border-box;
 }
