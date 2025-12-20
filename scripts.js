@@ -1,6 +1,8 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () =>
+{
   // Função para carregar projetos na página projetos.html
-  async function carregarProjetos() {
+  async function carregarProjetos()
+  {
     const tabela = document.getElementById("tabelaProjetos");
     if (!tabela) return; // só monta se existir a tabela
 
@@ -41,14 +43,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Alternância de tema
   const toggleBtn = document.getElementById("toggle-theme");
-  if (toggleBtn) {
+  if (toggleBtn)
+  {
     // Detecta preferência do sistema
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
-    if (prefersDark) {
+    if (prefersDark)
+    {
       document.body.classList.add("dark-mode");
       toggleBtn.textContent = "☀️ Modo Claro";
-    } else {
+    }
+    else
+    {
       document.body.classList.add("light-mode");
       toggleBtn.textContent = "🌙 Modo Escuro";
     }
@@ -66,4 +72,17 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+
+  // Destaca o menu selecionado (menuItem), utilizando a classe .active
+  const itens = document.querySelectorAll('.menu-item');
+  itens.forEach(item =>
+  {
+    item.addEventListener('click', () => {
+      itens.forEach(i => i.classList.remove('active'));
+      item.classList.add('active');
+    });
+  });
+
 });
+
+
