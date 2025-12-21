@@ -1,130 +1,323 @@
 /* ===========================
-   Padrão: escuro
+   Reset básico e estrutura
    =========================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  height: 100vh;
-  width: 100vw;
   margin: 0;
-  padding: 2rem;
-  background: #121212;
-  color: #f5f5f5;
   font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+/* Wrapper principal para centralizar conteúdo em telas grandes */
+.page-index,
+.page-projetos,
+.page-contato {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
 }
 
-main
-{
-  height: 50vh;
-  width: 100vw;
-  overflow-y: auto;     /* cria barra vertical quando necessário */
-  overflow-x: hidden;   /* evita barra horizontal */
-  padding: 20px;
+/* Container máximo do site */
+.site-header,
+.site-main,
+.site-footer {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 1rem;
 }
 
-header, footer
-{
-  height: 25vh;
-  width: 100vw;
-  background: #1f1f1f;
-  color: #fff;
-  padding: 1rem;
-  text-align: center;
-  display: flex;
+/* ===========================
+   Temas: escuro e claro
+   =========================== */
+
+body.dark-mode {
+  background-color: #121212;
+  color: #f5f5f5;
 }
 
-footer
-{
-  height: 5vh;
+body.light-mode {
+  background-color: #f5f5f5;
+  color: #333333;
 }
 
-nav {
+/* Header e footer nos temas */
+
+body.dark-mode .site-header,
+body.dark-mode .site-footer {
   background-color: #1f1f1f;
-  padding: 10px;
 }
 
-nav a
+body.light-mode .site-header,
+body.light-mode .site-footer {
+  background-color: #222222;
+  color: #ffffff;
+}
+
+/* Links de footer */
+.site-footer a {
+  color: inherit;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.site-footer a:hover {
+  color: #ffd700;
+  transform: scale(1.05);
+}
+
+/* ===========================
+   Header
+   =========================== */
+
+.site-header {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Avatar à esquerda, tamanho médio (≈ 120px) */
+.avatar-box {
+  flex: 0 0 auto;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid #ffd700;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Imagens específicas por página */
+.page-index .avatar {
+  background-image: url('ArvoreDaVida.jpg');
+}
+
+.page-projetos .avatar,
+.page-contato .avatar {
+  background-image: url('BERCELLI.png');
+}
+
+.avatar:hover
 {
-  padding: 10px;
+  animation: zoomCirculo 1s cubic-bezier(.4,0,.2,1);
+  transform-origin: center;
+}
+
+/* Título, subtítulo e navegação */
+.title-nav {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.title-nav h1 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+/* Navegação principal */
+.main-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.main-nav a {
+  padding: 0.4rem 0.8rem;
   color: #e0e0e0;
   text-decoration: none;
-  margin: 0 15px;
   font-weight: bold;
-  transition: transform 0.2s ease, color 0.2s ease;
+  border-radius: 4px;
+  background-color: transparent;
+  transition: transform 0.2s ease, color 0.2s ease, background-color 0.2s ease;
 }
 
-nav a:hover
-{
+body.light-mode .main-nav a {
+  color: #f5f5f5;
+}
+
+.main-nav a:hover {
   color: #ffd700;
-  transform: scale(1.1);
+  background-color: rgba(255, 255, 255, 0.05);
+  transform: scale(1.05);
 }
 
 .menuItem.active {
   color: #ffd700;
-  transform: scale(1.5);
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Botão de tema */
+.theme-toggle-box {
+  flex: 0 0 auto;
 }
 
 #toggle-theme {
-  margin-top: 10px;
-  padding: 5px 10px;
+  margin: 0;
+  padding: 0.3rem 0.8rem;
   border: none;
-  border-radius: 5px;
+  border-radius: 20px;
   cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: bold;
+  background-color: #333333;
+  color: #f5f5f5;
+  transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+body.light-mode #toggle-theme {
+  background-color: #f5f5f5;
+  color: #333333;
+}
+
+#toggle-theme:hover {
+  transform: scale(1.05);
+  background-color: #555555;
 }
 
 /* ===========================
-   Tema claro forçado
+   Main / cards / conteúdo
    =========================== */
-body.light-mode {
-  background: #f5f5f5;
-  color: #333;
+
+.site-main {
+  flex: 1 0 auto;
+  padding-top: 1.5rem;
+  padding-bottom: 2rem;
 }
 
-body.light-mode header,
-body.light-mode footer {
-  background: #222;
-  color: #fff;
+/* Grid de cards na home */
+.cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
 }
 
-body.light-mode nav {
-  background-color: #333;
+/* Card base */
+.card {
+  border-radius: 8px;
+  padding: 1.25rem;
+  background-color: #1e1e1e;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
-body.light-mode nav a {
-  color: #fff;
+body.light-mode .card {
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* ===========================
-   Conteúdo
-   =========================== */
-main { padding: 2rem; }
-section { margin-bottom: 2rem; }
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+}
 
-section h2 {
-  text-align: left;
+/* Títulos de seção */
+.card h2 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1.3rem;
   transition: transform 0.2s ease, color 0.2s ease;
   transform-origin: left center;
 }
 
-section h2:hover {
+.card h2:hover {
   color: #ffd700;
-  transform: scale(1.1);
+  transform: scale(1.03);
+}
+
+/* Listas de destaque */
+.highlight-list {
+  padding-left: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+/* Botões de ação */
+.btn-primary,
+.btn-secondary {
+  display: inline-block;
+  padding: 0.6rem 1rem;
+  border-radius: 5px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Primário */
+.btn-primary {
+  background-color: #333333;
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: #555555;
+  transform: scale(1.05);
+}
+
+/* Secundário */
+.btn-secondary {
+  background-color: #333333;
+  color: #ffffff;
+}
+
+.btn-secondary:hover {
+  background-color: #555555;
+  transform: scale(1.05);
+}
+
+/* Área de ações (voltar, etc.) */
+.actions {
+  margin-top: 1.5rem;
 }
 
 /* ===========================
-   Tabelas — modo escuro
+   Tabelas
    =========================== */
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 20px;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
 }
 
-th, td {
-  border: 1px solid #444;
-  padding: 8px;
+th,
+td {
+  border: 1px solid #444444;
+  padding: 0.5rem;
   text-align: left;
 }
 
@@ -143,24 +336,21 @@ tbody tr:nth-child(even) {
 }
 
 tbody tr:hover {
-  background-color: #333;
+  background-color: #333333;
   transition: background-color 0.2s ease;
 }
 
-tbody {
-  font-size: small;
-}
-
-/* Tabelas — modo claro */
+/* Tabelas no tema claro */
 body.light-mode thead tr {
-  background-color: #333;
-  color: #fff;
+  background-color: #333333;
+  color: #ffffff;
 }
 
-body.light-mode td {
+body.light-mode td,
+body.light-mode th {
   background-color: #f2f2f2;
-  color: #333;
-  border: 1px solid #ccc;
+  color: #333333;
+  border: 1px solid #cccccc;
 }
 
 body.light-mode tbody tr:nth-child(even) td {
@@ -172,43 +362,9 @@ body.light-mode tbody tr:hover td {
 }
 
 /* ===========================
-   Botão voltar
-   =========================== */
-.btn-voltar {
-  display: inline-block;
-  padding: 10px 15px;
-  background-color: #333;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 5px;
-  font-weight: bold;
-  transition: transform 0.2s ease, background-color 0.2s ease;
-}
-
-.btn-voltar:hover {
-  background-color: #555;
-  transform: scale(1.1);
-}
-
-/* ===========================
-   Rodapé
-   =========================== */
-footer a {
-  color: #fff;
-  text-decoration: none;
-  margin: 0 15px;
-  font-weight: bold;
-  transition: transform 0.2s ease, color 0.2s ease;
-}
-
-footer a:hover {
-  color: #ffd700;
-  transform: scale(1.1);
-}
-
-/* ===========================
    Formulário de contato
    =========================== */
+
 .form-contato {
   display: flex;
   flex-direction: column;
@@ -217,24 +373,40 @@ footer a:hover {
 }
 
 .form-contato label {
-  margin-top: 10px;
+  margin-top: 0.75rem;
   font-weight: bold;
 }
 
 .form-contato input,
 .form-contato textarea {
-  padding: 10px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
+  padding: 0.6rem;
+  margin-top: 0.3rem;
   border-radius: 5px;
+  border: 1px solid #cccccc;
   font-family: Arial, sans-serif;
 }
 
+/* Formulário — modo escuro */
+body.dark-mode .form-contato input,
+body.dark-mode .form-contato textarea {
+  background-color: #1f1f1f;
+  color: #e0e0e0;
+  border: 1px solid #444444;
+}
+
+/* Formulário — modo claro */
+body.light-mode .form-contato input,
+body.light-mode .form-contato textarea {
+  background-color: #ffffff;
+  color: #333333;
+  border: 1px solid #cccccc;
+}
+
 .form-contato button {
-  margin-top: 15px;
-  padding: 10px;
-  background-color: #333;
-  color: #fff;
+  margin-top: 1rem;
+  padding: 0.7rem;
+  background-color: #333333;
+  color: #ffffff;
   border: none;
   border-radius: 5px;
   font-weight: bold;
@@ -243,145 +415,309 @@ footer a:hover {
 }
 
 .form-contato button:hover {
-  background-color: #555;
-  transform: scale(1.05);
+  background-color: #555555;
+  transform: scale(1.03);
 }
 
-/* Formulário — modo escuro */
-body.dark-mode .form-contato input,
-body.dark-mode .form-contato textarea {
-  background-color: #1f1f1f;
-  color: #e0e0e0;
-  border: 1px solid #444;
+/* ===========================
+   Rodapé
+   =========================== */
+
+.site-footer {
+  flex-shrink: 0;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  text-align: center;
+  font-size: 0.85rem;
 }
 
-body.dark-mode .form-contato button {
-  background-color: #222;
+/* ===========================
+   Stack Tecnológica
+   =========================== */
+
+.tech-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  margin-top: 1rem;
 }
 
-body.dark-mode .form-contato button:hover {
-  background-color: #444;
+.tech-card {
+  background-color: #1e1e1e;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #333;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-align: center;
 }
 
-/* Formulário — modo claro */
-body.light-mode .form-contato input,
-body.light-mode .form-contato textarea {
-  background-color: #fff;
-  color: #333;
+body.light-mode .tech-card {
+  background-color: #ffffff;
   border: 1px solid #ccc;
 }
 
-body.light-mode .form-contato button {
-  background-color: #333;
-  color: #fff;
+.tech-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
 }
 
-body.light-mode .form-contato button:hover {
-  background-color: #555;
+.tech-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  opacity: 0.9;
 }
 
-.visitas
-{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;       /* ocupa toda a largura do box */
-  height: auto;
-}
-
-.circulo {
-  width: 70%;
-  aspect-ratio: 1 / 1;
-  border-radius: 50%;
-  background-image: url('ArvoreDaVida.jpg'); /* substitua pelo caminho da imagem */
-  background-size: cover;      /* cobre todo o círculo */
-  background-position: center; /* centraliza a imagem */
-  border: 4px solid #ffd700;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  margin: 5px;
-  padding: 5%;
-  box-sizing: border-box;
-}
-
-.elipse
-{
-  width: 70%;
-  aspect-ratio: 2 / 1;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.3);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 10px;
-  outline-width: 1px;
-}
-
-.elipse p
-{
+.tech-card h3 {
+  margin: 0.3rem 0 0.6rem 0;
   color: #ffd700;
-    text-shadow: 
-    2px 2px 0 black,
-   -2px 2px 0 black,
-    2px -2px 0 black,
-   -2px -2px 0 black;
+  font-size: 1.1rem;
 }
 
-p
-{
+.tech-card ul {
+  padding-left: 1.1rem;
   margin: 0;
-  font-size: clamp(1rem, 1vw, 2rem);
+  text-align: left;
 }
 
-.box
-{
-  width: min(20vw, 400px);
+.tech-card li {
+  margin-bottom: 0.3rem;
+  font-size: 0.95rem;
 }
 
-.cabecalho
-{
+/* ===========================
+   Experiência Profissional
+   =========================== */
 
-  width: 80vw;
+.exp-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  margin-top: 1rem;
 }
 
-.circuloPro
-{
-  width: 70%;
-  aspect-ratio: 1 / 1;
-  border-radius: 50%;
-  background-image: url('BERCELLI.png'); /* substitua pelo caminho da imagem */
-  background-size: cover;      /* cobre todo o círculo */
-  background-position: center; /* centraliza a imagem */
-  border: 4px solid #ffd700;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  margin: 5px;
-  padding: 5%;
-  box-sizing: border-box;
+.exp-card {
+  background-color: #1e1e1e;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #333;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+body.light-mode .exp-card {
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+}
 
+.exp-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+}
 
-.circuloCon
+.exp-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  opacity: 0.9;
+  text-align: center;
+}
+
+.exp-card h3 {
+  margin: 0.3rem 0 0.6rem 0;
+  color: #ffd700;
+  font-size: 1.15rem;
+  text-align: center;
+}
+
+.exp-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  text-align: left;
+}
+
+/* ===========================
+   Formação Acadêmica
+   =========================== */
+
+.edu-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  margin-top: 1rem;
+}
+
+.edu-card {
+  background-color: #1e1e1e;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #333;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+body.light-mode .edu-card {
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+}
+
+.edu-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+}
+
+.edu-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  opacity: 0.9;
+  text-align: center;
+}
+
+.edu-card h3 {
+  margin: 0.3rem 0 0.6rem 0;
+  color: #ffd700;
+  font-size: 1.15rem;
+  text-align: center;
+}
+
+.edu-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  text-align: left;
+}
+
+/* Cards principais da home em colunas */
+.cards-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  margin-top: 1rem;
+}
+
+@keyframes zoomCirculo
 {
-  width: 70%;
-  aspect-ratio: 1 / 1;
-  border-radius: 50%;
-  background-image: url('BERCELLI.png'); /* substitua pelo caminho da imagem */
-  background-size: cover;      /* cobre todo o círculo */
-  background-position: center; /* centraliza a imagem */
-  border: 4px solid #ffd700;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  margin: 5px;
-  padding: 5%;
-  box-sizing: border-box;
+  0%
+  {
+    transform: scale(1);
+  }
+  33%
+  {
+    transform: scale(1.3);
+  }
+  66%
+  {
+    transform: scale(1.6);
+  }
+}
+
+/* ===========================
+   Responsividade
+   =========================== */
+
+/* Celulares até 480px (≈ 5") */
+@media (max-width: 480px) {
+  .header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .avatar {
+    width: 90px;
+    height: 90px;
+  }
+
+  .title-nav h1 {
+    font-size: 1.4rem;
+  }
+
+  .subtitle {
+    font-size: 0.85rem;
+  }
+
+  .main-nav {
+    gap: 0.5rem;
+  }
+
+  .main-nav a {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.85rem;
+  }
+
+  #toggle-theme {
+    margin-top: 0.5rem;
+  }
+
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 481px a 600px (≈ 5.5") */
+@media (min-width: 481px) and (max-width: 600px) {
+  .header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .avatar {
+    width: 100px;
+    height: 100px;
+  }
+
+  .title-nav h1 {
+    font-size: 1.5rem;
+  }
+
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 601px a 900px (tablets 7") */
+@media (min-width: 601px) and (max-width: 900px) {
+  .header-inner {
+    gap: 1.25rem;
+  }
+
+  .avatar {
+    width: 110px;
+    height: 110px;
+  }
+
+  .cards-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* 901px a 1200px (tablets 10–11") */
+@media (min-width: 901px) and (max-width: 1200px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* 1201px a 2000px (desktops) */
+@media (min-width: 1201px) and (max-width: 2000px) {
+  .cards-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* 2001px+ (TVs / telas muito grandes) */
+@media (min-width: 2001px) {
+  .site-header,
+  .site-main,
+  .site-footer {
+    max-width: 1400px;
+  }
+
+  .cards-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .title-nav h1 {
+    font-size: 2.1rem;
+  }
+
+  .subtitle {
+    font-size: 1.05rem;
+  }
 }

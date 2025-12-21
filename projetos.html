@@ -2,39 +2,48 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bercelli - Projetos</title>
     <link rel="shortcut icon" href="icons8-github-250.png" type="image/x-icon">
-    <title>Bercelli-Projetos</title>
+    <link rel="stylesheet" href="style.css">
   </head>
-  <body>
-    <header>
-      <div class="box">
-        <div class="visitas">
-          <div class="circuloPro">
-          </div>
+  <body class="page-projetos">
+    <header class="site-header">
+      <div class="header-inner">
+        <div class="avatar-box">
+          <div class="avatar"></div>
         </div>
-      </div>
-        <div class="cabecalho">
+        <div class="title-nav">
           <h1>Lista de Projetos</h1>
-          <nav>
+          <nav class="main-nav">
             <a href="index.html" class="menuItem">Início</a>
             <a href="projetos.html" class="menuItem active">Projetos</a>
             <a href="contato.html" class="menuItem">Contato</a>
           </nav>
-          <button id="toggle-theme">🌙 Modo Escuro</button>
         </div>
-      </header>
-    <main>
-      <section>
+        <div class="theme-toggle-box">
+          <button id="toggle-theme" type="button">🌙 Modo escuro</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="site-main">
+      <section class="card">
         <h2>Projetos</h2>
-        <table id="tabelaProjetos"></table>
+        <div class="table-wrapper">
+          <table id="tabelaProjetos"></table>
+        </div>
       </section>
-      <a href="index.html" class="btn-voltar">⬅ Voltar à Página Principal</a>
+
+      <div class="actions">
+        <a href="index.html" class="btn-secondary">⬅ Voltar à página principal</a>
+      </div>
     </main>
 
-    <footer>
+    <footer class="site-footer">
       <p>© 2025 Valter Bercelli • <a href="mailto:bercelli@bercelli.com.br">Contato</a></p>
     </footer>
+
     <script src="scripts.js" defer></script>
   </body>
 </html>

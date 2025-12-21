@@ -2,31 +2,33 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bercelli - Contato</title>
     <link rel="shortcut icon" href="icons8-github-250.png" type="image/x-icon">
-    <title>Bercelli-Contato</title>
     <link rel="stylesheet" href="style.css">
   </head>
-  <body>
-    <header>
-      <div class="box">
-        <div class="visitas">
-          <div class="circuloCon">
-          </div>
+  <body class="page-contato">
+    <header class="site-header">
+      <div class="header-inner">
+        <div class="avatar-box">
+          <div class="avatar"></div>
         </div>
-      </div>
-      <div class="cabecalho">
-        <h1>Contato</h1>
-        <nav>
-          <a href="index.html" class="menuItem">Início</a>
-          <a href="projetos.html" class="menuItem">Projetos</a>
-          <a href="contato.html" class="menuItem active">Contato</a>
-        </nav>
-        <button id="toggle-theme">🌙 Modo Escuro</button>
+        <div class="title-nav">
+          <h1>Contato</h1>
+          <nav class="main-nav">
+            <a href="index.html" class="menuItem">Início</a>
+            <a href="projetos.html" class="menuItem">Projetos</a>
+            <a href="contato.html" class="menuItem active">Contato</a>
+          </nav>
+        </div>
+        <div class="theme-toggle-box">
+          <button id="toggle-theme" type="button">🌙 Modo escuro</button>
+        </div>
       </div>
     </header>
 
-    <main>
-      <section>
+    <main class="site-main">
+      <section class="card">
         <h2>Fale comigo</h2>
         <form class="form-contato">
           <label for="nome">Nome:</label>
@@ -41,12 +43,16 @@
           <button type="submit">Enviar</button>
         </form>
       </section>
-      <a href="index.html" class="btn-voltar">⬅ Voltar à Página Principal</a>
+
+      <div class="actions">
+        <a href="index.html" class="btn-secondary">⬅ Voltar à página principal</a>
+      </div>
     </main>
 
-    <footer>
+    <footer class="site-footer">
       <p>© 2025 Valter Bercelli • <a href="mailto:bercelli@bercelli.com.br">Contato</a></p>
     </footer>
+
     <script src="scripts.js" defer></script>
   </body>
 </html>

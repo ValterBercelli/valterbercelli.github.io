@@ -2,66 +2,154 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8">
-    <title>Bercelli-Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bercelli - Portfólio</title>
     <link rel="shortcut icon" href="icons8-github-250.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
   </head>
-  <body>
-    <header>
-      <div class="box">
-        <div class="visitas">
-          <div class="circulo">
-            <div class="elipse">
-              <p>Total de visitas</p>
-              <p id="totalVisitas"><strong>1</strong></p>
-            </div>
-            <div class="elipse">
-              <p>Suas visitas</p>
-              <p id="suasVisitas"><strong>1</strong></p>
-            </div>
-          </div>
+  <body class="page-index">
+    <header class="site-header">
+      <div class="header-inner">
+        <div class="avatar-box">
+          <div class="avatar"></div>
         </div>
-      </div>
-      <div class="cabecalho">
-        <h1>Valter Bercelli</h1>
-        <p><strong>Arquiteto/Analista de Sistemas</strong> • APIs • Automação</p>
-        <nav>
-          <a href="index.html" class="menuItem active">Início</a>
-          <a href="projetos.html" class="menuItem">Projetos</a>
-          <a href="contato.html" class="menuItem">Contato</a>
-        </nav>
-        <!-- Botão de alternância de tema -->
-        <button id="toggle-theme">🌙 Modo Escuro</button>
+        <div class="title-nav">
+          <h1>Valter Bercelli</h1>
+          <p class="subtitle"><strong>Arquiteto/Analista de Sistemas</strong> • APIs • Automação</p>
+          <nav class="main-nav">
+            <a href="index.html" class="menuItem active">Início</a>
+            <a href="projetos.html" class="menuItem">Projetos</a>
+            <a href="contato.html" class="menuItem">Contato</a>
+          </nav>
+        </div>
+        <div class="theme-toggle-box">
+          <button id="toggle-theme" type="button">🌙 Modo escuro</button>
+        </div>
       </div>
     </header>
 
-    <main>
-      <section>
-        <h2>Sobre mim</h2>
-        <p>
-          Analista de sistemas (51 anos de experiência no Mercado de TIC), especialista em T.I.C., focado em peopleware e tecnologias<br>
-          Especialização em Administração da Tecnologia da Informação pela Universidade do Oeste Paulista (2013)<br>
-          Graduação em Superior de Tecnologia em Desenvolvimento Web pela Universidade do Oeste Paulista (2006).<br>
-          Atualmente é educador e professor no SENAC PPR - Presidente Prudente (SP).<br>
-          Tem experiência na área de Ciência da Computação, com ênfase em Sistemas de Informação<br>
-          Atuando principalmente nos seguintes temas:<br>
-          Organizações e pessoas, (informações, conhecimento e competencias), ideias, exigências do mercado e <br>
-          (ERP, CRM, SCM, BI, PRM e BSC). (Cinco décadas de experiências ativas e agregadoras, no mercado de trabalho (PDCA)).<br>
-        </p>
+    <main class="site-main">
+
+      <section class="cards-grid">
+
+        <article class="card">
+          <h2>Sobre mim</h2>
+          <p>Analista de sistemas (51 anos de experiência)...</p>
+          <p>Especialização em Administração da Tecnologia...</p>
+          <p>Professor no SENAC PPR...</p>
+          <p>Experiência em ERP, CRM, SCM, BI, PRM, BSC...</p>
+        </article>
+
+        <article class="card">
+          <h2>Projetos em destaque</h2>
+          <ul class="highlight-list">
+            <li><strong>Projetos Educacionais:</strong> diversos, com publicação em breve.</li>
+            <li><strong>Projetos Pedagógicos:</strong> diversos, com publicação em breve.</li>
+          </ul>
+          <a href="projetos.html" class="btn-primary">Ver lista de projetos</a>
+        </article>
+
+        <article class="card">
+          <h2>Stack Tecnológica</h2>
+          <div class="tech-grid">
+
+            <div class="tech-card">
+              <div class="tech-icon">💻</div>
+              <h3>Linguagens</h3>
+              <ul>
+                <li>JavaScript</li>
+                <li>Python</li>
+                <li>SQL</li>
+                <li>Shell Script</li>
+              </ul>
+            </div>
+
+            <div class="tech-card">
+              <div class="tech-icon">🌐</div>
+              <h3>Desenvolvimento Web</h3>
+              <ul>
+                <li>HTML5 / CSS3</li>
+                <li>APIs REST</li>
+                <li>JSON / XML</li>
+              </ul>
+            </div>
+
+            <div class="tech-card">
+              <div class="tech-icon">🛠️</div>
+              <h3>Ferramentas</h3>
+              <ul>
+                <li>Git / GitHub</li>
+                <li>VS Code</li>
+                <li>Node.js</li>
+              </ul>
+            </div>
+
+          </div>
+        </article>
+
+        <article class="card">
+          <h2>Experiência Profissional</h2>
+          <div class="exp-grid">
+
+            <div class="exp-card">
+              <div class="exp-icon">🏫</div>
+              <h3>Professor / Educador</h3>
+              <p>SENAC Presidente Prudente — formação profissional e competências.</p>
+            </div>
+
+            <div class="exp-card">
+              <div class="exp-icon">🧩</div>
+              <h3>Arquiteto de Sistemas</h3>
+              <p>Modelagem e integração de sistemas corporativos.</p>
+            </div>
+
+            <div class="exp-card">
+              <div class="exp-icon">💼</div>
+              <h3>Analista de Sistemas</h3>
+              <p>51 anos de experiência em TIC e automação.</p>
+            </div>
+
+          </div>
+        </article>
+
+        <article class="card">
+          <h2>Formação Acadêmica</h2>
+
+          <div class="edu-grid">
+
+            <div class="edu-card">
+              <div class="edu-icon">🎓</div>
+              <h3>Especialização</h3>
+              <p>
+                Administração da Tecnologia da Informação — Universidade do Oeste Paulista (2013).
+              </p>
+            </div>
+
+            <div class="edu-card">
+              <div class="edu-icon">💼</div>
+              <h3>Graduação</h3>
+              <p>
+                Superior de Tecnologia em Desenvolvimento Web — Universidade do Oeste Paulista (2006).
+              </p>
+            </div>
+
+            <div class="edu-card">
+              <div class="edu-icon">📚</div>
+              <h3>Formações Complementares</h3>
+              <p>
+                Cursos e certificações em TIC, automação, processos, gestão da informação e tecnologias emergentes.
+              </p>
+            </div>
+
+          </div>
+        </article>
       </section>
 
-      <section>
-        <h2>Projetos em destaque</h2>
-        <ul>
-          <li><strong>Projetos Educacionais:</strong> Diversos, com publicação em breve</li>
-          <li><strong>Projetos Pedagógicos:</strong> Diversos, com publicação em breve</li>
-        </ul>
-      </section>
     </main>
-
-    <footer>
+    <footer class="site-footer">
       <p>© 2025 Valter Bercelli • <a href="mailto:bercelli@bercelli.com.br">Contato</a></p>
     </footer>
+
     <script src="scripts.js" defer></script>
   </body>
 </html>

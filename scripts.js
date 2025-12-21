@@ -1,19 +1,20 @@
-document.addEventListener("DOMContentLoaded", () =>
-{
-  // Função para carregar projetos na página projetos.html
-  async function carregarProjetos()
-  {
+document.addEventListener("DOMContentLoaded", () => {
+  /* ===========================
+     Tabela de projetos
+     =========================== */
+  async function carregarProjetos() {
     const tabela = document.getElementById("tabelaProjetos");
-    if (!tabela) return; // só monta se existir a tabela
+    if (!tabela) return;
 
     try {
-      const response = await fetch("projetos.json"); // nome correto em minúsculo
+      const response = await fetch("projetos.json");
       if (!response.ok) {
         throw new Error("Não foi possível carregar projetos.json");
       }
-      const data = await response.json();
 
-      // Cabeçalho
+      const data = await response.json();
+      if (!Array.isArray(data) || data.length === 0) return;
+
       const cabecalho = Object.keys(data[0]);
       let thead = "<thead><tr>";
       cabecalho.forEach(col => {
@@ -21,12 +22,11 @@ document.addEventListener("DOMContentLoaded", () =>
       });
       thead += "</tr></thead>";
 
-      // Corpo
       let tbody = "<tbody>";
       data.forEach(item => {
         let linha = "<tr>";
         cabecalho.forEach(col => {
-          linha += `<td>${item[col]}</td>`;
+          linha += `<td>${item[col] ?? ""}</td>`;
         });
         linha += "</tr>";
         tbody += linha;
@@ -41,48 +41,63 @@ document.addEventListener("DOMContentLoaded", () =>
 
   carregarProjetos();
 
-  // Alternância de tema
+  /* ===========================
+     Tema: escuro/claro
+     - respeita o SO
+     - usa localStorage
+     - botão alterna manualmente
+     =========================== */
+
   const toggleBtn = document.getElementById("toggle-theme");
-  if (toggleBtn)
-  {
-    // Detecta preferência do sistema
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
-    if (prefersDark)
-    {
-      document.body.classList.add("dark-mode");
-      toggleBtn.textContent = "☀️ Modo Claro";
-    }
-    else
-    {
+  function aplicarTema(tema) {
+    document.body.classList.remove("dark-mode", "light-mode");
+
+    if (tema === "light") {
       document.body.classList.add("light-mode");
-      toggleBtn.textContent = "🌙 Modo Escuro";
+      if (toggleBtn) toggleBtn.textContent = "🌙 Modo escuro";
+    } else {
+      document.body.classList.add("dark-mode");
+      if (toggleBtn) toggleBtn.textContent = "☀️ Modo claro";
+    }
+  }
+
+  function detectarTemaInicial() {
+    const salvo = localStorage.getItem("tema-bercelli");
+
+    if (salvo === "light" || salvo === "dark") {
+      return salvo;
     }
 
-    // Alternância manual
+    if (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches) {
+      return "light";
+    }
+
+    // Padrão: escuro
+    return "dark";
+  }
+
+  const temaInicial = detectarTemaInicial();
+  aplicarTema(temaInicial);
+
+  if (toggleBtn) {
     toggleBtn.addEventListener("click", () => {
-      if (document.body.classList.contains("dark-mode")) {
-        document.body.classList.remove("dark-mode");
-        document.body.classList.add("light-mode");
-        toggleBtn.textContent = "🌙 Modo Escuro";
-      } else {
-        document.body.classList.remove("light-mode");
-        document.body.classList.add("dark-mode");
-        toggleBtn.textContent = "☀️ Modo Claro";
-      }
+      const temaAtual = document.body.classList.contains("light-mode") ? "light" : "dark";
+      const novoTema = temaAtual === "light" ? "dark" : "light";
+      aplicarTema(novoTema);
+      localStorage.setItem("tema-bercelli", novoTema);
     });
   }
 
-  // Destaca o menu selecionado (menuItem), utilizando a classe .active
-  const itens = document.querySelectorAll('.menu-item');
-  itens.forEach(item =>
-  {
-    item.addEventListener('click', () => {
-      itens.forEach(i => i.classList.remove('active'));
-      item.classList.add('active');
+  /* ===========================
+     Destaque de menu ativo (extra)
+     =========================== */
+
+  const itensMenu = document.querySelectorAll(".menuItem");
+  itensMenu.forEach(item => {
+    item.addEventListener("click", () => {
+      itensMenu.forEach(i => i.classList.remove("active"));
+      item.classList.add("active");
     });
   });
-
 });
-
-
