@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
      =========================== */
   const API_BASE = "https://controle-acessos-api.vercel.app/api";
 
-    /* ===========================
+  /* ===========================
      GERAR OU RECUPERAR USER ID
      =========================== */
   function obterOuCriarUserId() {
@@ -23,11 +23,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* ===========================
-     REGISTRAR VISITA
+     REGISTRAR VISITA (POST)
      =========================== */
   async function registrarVisita() {
     try {
-      await fetch(`${API_BASE}/visitas`, {
+      await fetch(`${API_BASE}/registrar-acesso`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userId })
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* ===========================
-     CARREGAR CONTADORES
+     CARREGAR CONTADORES (GET)
      =========================== */
   async function carregarContadores() {
     const totalEl = document.getElementById("contador-total");
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!totalEl || !usuarioEl) return;
 
     try {
-      const resposta = await fetch(`${API_BASE}/visitas?userId=${userId}`);
+      const resposta = await fetch(`${API_BASE}/visitas-usuario?uuid=${userId}`);
       const dados = await resposta.json();
 
       totalEl.textContent = dados.totalVisitas ?? "--";
