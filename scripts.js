@@ -1,6 +1,73 @@
 document.addEventListener("DOMContentLoaded", () => {
+
   /* ===========================
-     Tabela de projetos
+     CONFIGURAÇÃO DA API
+     =========================== */
+  const API_BASE = "https://controle-acessos-api.vercel.app/api";
+
+    /* ===========================
+     GERAR OU RECUPERAR USER ID
+     =========================== */
+  function obterOuCriarUserId() {
+    let userId = localStorage.getItem("userId");
+
+    if (!userId) {
+      userId = crypto.randomUUID();
+      localStorage.setItem("userId", userId);
+    }
+
+    return userId;
+  }
+
+  const userId = obterOuCriarUserId();
+
+
+  /* ===========================
+     REGISTRAR VISITA
+     =========================== */
+  async function registrarVisita() {
+    try {
+      await fetch(`${API_BASE}/visitas`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId })
+      });
+    } catch (erro) {
+      console.error("Erro ao registrar visita:", erro);
+    }
+  }
+
+
+  /* ===========================
+     CARREGAR CONTADORES
+     =========================== */
+  async function carregarContadores() {
+    const totalEl = document.getElementById("contador-total");
+    const usuarioEl = document.getElementById("contador-usuario");
+
+    if (!totalEl || !usuarioEl) return;
+
+    try {
+      const resposta = await fetch(`${API_BASE}/visitas?userId=${userId}`);
+      const dados = await resposta.json();
+
+      totalEl.textContent = dados.totalVisitas ?? "--";
+      usuarioEl.textContent = dados.visitasUsuario ?? "--";
+
+    } catch (erro) {
+      console.error("Erro ao carregar contadores:", erro);
+    }
+  }
+
+
+  /* ===========================
+     EXECUTAR AO CARREGAR
+     =========================== */
+  registrarVisita().then(carregarContadores);
+
+
+  /* ===========================
+     TABELA DE PROJETOS
      =========================== */
   async function carregarProjetos() {
     const tabela = document.getElementById("tabelaProjetos");
@@ -8,32 +75,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
       const response = await fetch("projetos.json");
-      if (!response.ok) {
-        throw new Error("Não foi possível carregar projetos.json");
-      }
+      if (!response.ok) throw new Error("Não foi possível carregar projetos.json");
 
       const data = await response.json();
       if (!Array.isArray(data) || data.length === 0) return;
 
       const cabecalho = Object.keys(data[0]);
       let thead = "<thead><tr>";
-      cabecalho.forEach(col => {
-        thead += `<th>${col}</th>`;
-      });
+      cabecalho.forEach(col => thead += `<th>${col}</th>`);
       thead += "</tr></thead>";
 
       let tbody = "<tbody>";
       data.forEach(item => {
-        let linha = "<tr>";
+        tbody += "<tr>";
         cabecalho.forEach(col => {
-          linha += `<td>${item[col] ?? ""}</td>`;
+          tbody += `<td>${item[col] ?? ""}</td>`;
         });
-        linha += "</tr>";
-        tbody += linha;
+        tbody += "</tr>";
       });
       tbody += "</tbody>";
 
       tabela.innerHTML = thead + tbody;
+
     } catch (error) {
       console.error("Erro ao carregar projetos:", error);
     }
@@ -41,13 +104,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   carregarProjetos();
 
-  /* ===========================
-     Tema: escuro/claro
-     - respeita o SO
-     - usa localStorage
-     - botão alterna manualmente
-     =========================== */
 
+  /* ===========================
+     TEMA ESCURO/CLARO
+     =========================== */
   const toggleBtn = document.getElementById("toggle-theme");
 
   function aplicarTema(tema) {
@@ -55,30 +115,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (tema === "light") {
       document.body.classList.add("light-mode");
-      if (toggleBtn) toggleBtn.textContent = "🌙 Modo escuro";
+      toggleBtn.textContent = "🌙 Modo escuro";
     } else {
       document.body.classList.add("dark-mode");
-      if (toggleBtn) toggleBtn.textContent = "☀️ Modo claro";
+      toggleBtn.textContent = "☀️ Modo claro";
     }
   }
 
   function detectarTemaInicial() {
     const salvo = localStorage.getItem("tema-bercelli");
+    if (salvo === "light" || salvo === "dark") return salvo;
 
-    if (salvo === "light" || salvo === "dark") {
-      return salvo;
-    }
+    if (window.matchMedia("(prefers-color-scheme: light)").matches) return "light";
 
-    if (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches) {
-      return "light";
-    }
-
-    // Padrão: escuro
     return "dark";
   }
 
-  const temaInicial = detectarTemaInicial();
-  aplicarTema(temaInicial);
+  aplicarTema(detectarTemaInicial());
 
   if (toggleBtn) {
     toggleBtn.addEventListener("click", () => {
@@ -89,10 +142,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* ===========================
-     Destaque de menu ativo (extra)
-     =========================== */
 
+  /* ===========================
+     MENU ATIVO
+     =========================== */
   const itensMenu = document.querySelectorAll(".menuItem");
   itensMenu.forEach(item => {
     item.addEventListener("click", () => {
@@ -100,4 +153,5 @@ document.addEventListener("DOMContentLoaded", () => {
       item.classList.add("active");
     });
   });
+
 });
