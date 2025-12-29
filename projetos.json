@@ -1,19 +1,21 @@
 [
   {
-    "NomeDoProjeto": "JogoDeDados",
+    "NomeDoProjeto": "JogoDeDados-V3",
     "DescricaoDoProjeto": "Jogo de dados",
     "Objetivo": "Pedagógico",
     "Finalidade": "Ensinar lógica de programação com HTML, CSS e JS",
     "Linguagens": "HTML, CSS, JS",
-    "TecnicasUtilizadas": "Utilização de variáveis; Conceito aleatório; Utilização de imagens; Animação CSS"
+    "TecnicasUtilizadas": "Utilização de variáveis; Conceito aleatório; Utilização de imagens; Animação CSS",
+    "Link": "https://github.com/ValterBercelli/JogoDeDados-V3.git"
   },
   {
-    "NomeDoProjeto": "JogoDeDados-2J",
+    "NomeDoProjeto": "JogoDeDados-3J",
     "DescricaoDoProjeto": "Jogo de dados",
     "Objetivo": "Pedagógico",
     "Finalidade": "Ensinar lógica de programação com HTML, CSS e JS",
     "Linguagens": "HTML, CSS, JS",
-    "TecnicasUtilizadas": "Utilização de variáveis; Conceito aleatório; Utilização de imagens; Animação CSS"
+    "TecnicasUtilizadas": "Utilização de variáveis; Conceito aleatório; Utilização de imagens; Animação CSS",
+    "Link": "https://www.bercelli.com.br"
   },
   {
     "NomeDoProjeto": "JogoDeDados-2JRnk",
@@ -21,7 +23,8 @@
     "Objetivo": "Pedagógico",
     "Finalidade": "Ensinar lógica de programação com HTML, CSS e JS",
     "Linguagens": "HTML, CSS, JS",
-    "TecnicasUtilizadas": "Utilização de variáveis; Conceito aleatório; Utilização de imagens; Animação CSS; Persistencia em Local Storage"
+    "TecnicasUtilizadas": "Utilização de variáveis; Conceito aleatório; Utilização de imagens; Animação CSS; Persistencia em Local Storage",
+    "Link": "https://www.bercelli.com.br"
   },
   {
     "NomeDoProjeto": "JoKenPo",
@@ -29,6 +32,25 @@
     "Objetivo": "Pedagógico",
     "Finalidade": "Ensinar lógica de programação com HTML, CSS e JS",
     "Linguagens": "HTML, CSS, JS",
-    "TecnicasUtilizadas": "Utilização de variáveis; Conceito aleatório; Utilização de imagens; Animação CSS"
+    "TecnicasUtilizadas": "Utilização de variáveis; Conceito aleatório; Utilização de imagens; Animação CSS",
+    "Link": "https://www.bercelli.com.br"
+  },
+  {
+    "NomeDoProjeto": "CalculadoraDidatica-V2",
+    "DescricaoDoProjeto": "Calculadora Básica com 4 operações",
+    "Objetivo": "Pedagógico",
+    "Finalidade": "Ensinar lógica de programação com HTML, CSS e JS",
+    "Linguagens": "HTML, CSS, JS",
+    "TecnicasUtilizadas": "Utilização de variáveis; Conceito aleatório; Utilização de imagens; Animação CSS",
+    "Link": "https://github.com/ValterBercelli/CalculadoraDidatica-V2.git"
+  },
+  {
+    "NomeDoProjeto": "Colando-MultiplosInputs",
+    "DescricaoDoProjeto": "Form com JS, que permite colar múltiplos 'input'",
+    "Objetivo": "Pedagógico",
+    "Finalidade": "Ensinar lógica de programação com HTML, CSS e JS",
+    "Linguagens": "HTML, CSS, JS, CSV",
+    "TecnicasUtilizadas": "Utilização de variáveis; Conceito 'form'; Utilização de imagens e CSV; Animação CSS e uso de temas",
+    "Link": "https://github.com/ValterBercelli/Colando-MultiplosInputs.git"
   }
 ]

@@ -68,8 +68,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* ===========================
      TABELA DE PROJETOS
-     =========================== */
-  async function carregarProjetos() {
+     ===========================
+  
+     async function carregarProjetos() {
     const tabela = document.getElementById("tabelaProjetos");
     if (!tabela) return;
 
@@ -103,7 +104,150 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   carregarProjetos();
+*/
 
+/* ==================
+   TABELA DE PROJETOS
+   ================== */
+
+let projetos = []; // cache dos dados
+
+/* =================
+   CARREGAR PROJETOS
+   ================= */
+
+async function carregarProjetos()
+{
+ 
+  if (window.location.pathname.includes("projetos.html"))
+  {
+    const tabela = document.getElementById("tabelaProjetos");
+    if (!tabela) {
+      console.warn("Elemento #tabelaProjetos não encontrado.");
+      return;
+    }
+  }
+
+  try {
+    const response = await fetch("projetos.json");
+
+    if (!response.ok) {
+      console.error("Erro ao carregar projetos.json:", response.status);
+      return;
+    }
+
+    const data = await response.json();
+
+    if (!Array.isArray(data) || data.length === 0) {
+      console.warn("projetos.json está vazio ou não é um array.");
+      return;
+    }
+
+    // Armazena no cache global
+    projetos = data;
+
+    // Monta a tabela inicial
+    montarTabela(projetos);
+
+  } catch (error) {
+    console.error("Erro inesperado ao carregar projetos:", error);
+  }
+}
+
+/* =============
+   MONTAR TABELA
+   ============= */
+function montarTabela(lista) {
+  const tabela = document.getElementById("tabelaProjetos");
+  if (!tabela) return;
+
+  // Se não houver resultados, limpa a tabela e mostra aviso
+  if (lista.length === 0) {
+    tabela.innerHTML = `
+      <thead>
+        <tr><th>Nenhum resultado encontrado</th></tr>
+      </thead>
+      <tbody></tbody>
+    `;
+    return;
+  }
+
+  const colunas = Object.keys(lista[0]).filter(col => col !== "Link");
+
+  const thead = `
+    <thead>
+      <tr>
+        ${colunas.map(col => `<th>${col}</th>`).join("")}
+      </tr>
+    </thead>
+  `;
+
+  const tbody = `
+    <tbody>
+      ${lista.map(item => `
+        <tr>
+          ${colunas.map(col => {
+            let valor = item[col] ?? "";
+
+            if (col === "NomeDoProjeto" && item.Link) {
+              valor = `
+                <a href="${item.Link}" target="_blank" class="link-projeto">
+                  ${valor} 🔗
+                </a>
+              `;
+            }
+
+            return `<td>${valor}</td>`;
+          }).join("")}
+        </tr>
+      `).join("")}
+    </tbody>
+  `;
+
+  tabela.innerHTML = thead + tbody;
+}
+
+/* ===========================
+   FILTROS
+   =========================== */
+function aplicarFiltros() {
+  const nomeFiltro = document.getElementById("filtroNome")?.value.trim().toLowerCase();
+  const linguagensFiltro = document.getElementById("filtroLinguagens")?.value.trim().toLowerCase();
+
+  const filtrados = projetos.filter(p => {
+    const nome = (p.NomeDoProjeto ?? "").toLowerCase();
+    const linguagens = (p.Linguagens ?? "").toLowerCase();
+
+    const nomeOK = nomeFiltro ? nome.includes(nomeFiltro) : true;
+    const linguagensOK = linguagensFiltro ? linguagens.includes(linguagensFiltro) : true;
+
+    return nomeOK && linguagensOK;
+  });
+
+  montarTabela(filtrados);
+}
+
+/* Eventos dos filtros */
+const filtroNome = document.getElementById("filtroNome");
+const filtroLinguagens = document.getElementById("filtroLinguagens");
+const btnLimpar = document.getElementById("btnLimparFiltros");
+
+if (filtroNome) filtroNome.addEventListener("input", aplicarFiltros);
+if (filtroLinguagens) filtroLinguagens.addEventListener("input", aplicarFiltros);
+
+if (btnLimpar)
+{
+  btnLimpar.addEventListener("click", () =>
+  {
+    filtroNome.value = "";
+    filtroLinguagens.value = "";
+    aplicarFiltros();
+  });
+}
+
+
+/* Inicialização */
+carregarProjetos();
 
   /* ===========================
      TEMA ESCURO/CLARO

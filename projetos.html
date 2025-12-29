@@ -30,7 +30,12 @@
     <main class="site-main">
       <section class="card">
         <h2>Projetos</h2>
-        <div class="table-wrapper">
+        <div class="filtros">
+          <input type="text" id="filtroNome" placeholder="Filtrar por nome do projeto" autocomplete="off"/>
+          <input type="text" id="filtroLinguagens" placeholder="Filtrar por linguagens" autocomplete="off"/>
+           <button id="btnLimparFiltros" class="btn-limpar">Limpar filtros 🧹</button>
+        </div>
+        <div class="tabela-container table-wrapper">
           <table id="tabelaProjetos"></table>
         </div>
       </section>

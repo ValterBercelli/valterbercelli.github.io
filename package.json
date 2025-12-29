@@ -1,8 +1,5 @@
 {
-  "name": "portfolio-backend",
-  "version": "1.0.0",
   "dependencies": {
-    "mongodb": "^6.0.0",
-    "uuid": "^9.0.0"
+    "mongodb": "^7.0.0"
   }
 }

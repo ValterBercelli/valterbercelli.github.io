@@ -114,7 +114,7 @@ body.light-mode .site-footer {
 
 .page-projetos .avatar,
 .page-contato .avatar {
-  background-image: url('BERCELLI.png');
+  background-image: url('BERCELLI.jpg');
 }
 
 .avatar:hover
@@ -361,6 +361,55 @@ body.light-mode tbody tr:hover td {
   background-color: #d0d0d0;
 }
 
+
+/* Container da tabela incrementada com link*/
+
+/* Link do projeto */
+.link-projeto {
+  color: #007bff;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.link-projeto:hover {
+  text-decoration: underline;
+}
+
+/* Área de filtros */
+.filtros {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.btn-limpar {
+  padding: 8px 14px;
+  background: whitesmoke;
+  color: black;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s ease;
+}
+
+.btn-limpar:hover {
+  background: #ffd700;
+  transform: scale(1.05);
+}
+
+.btn-limpar:active {
+  transform: scale(0.95);
+}
+
+.filtros input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: 250px;
+}
+
 /* ===========================
    Formulário de contato
    =========================== */
@@ -592,6 +641,45 @@ body.light-mode .edu-card {
   margin-top: 1rem;
 }
 
+/* ===========================
+   Box do contador de visitas
+   =========================== */
+
+.contador-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 215, 0, 0.25);
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.15);
+  font-size: 0.85rem;
+  min-width: 150px;
+}
+
+body.light-mode .contador-box {
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(255, 215, 0, 0.35);
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.25);
+}
+
+.contador-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.contador-label {
+  opacity: 0.85;
+  font-weight: bold;
+}
+
+.contador-valor {
+  color: #ffd700;
+  font-weight: bold;
+}
+
 @keyframes zoomCirculo
 {
   0%
@@ -607,6 +695,9 @@ body.light-mode .edu-card {
     transform: scale(1.6);
   }
 }
+
+
+
 
 /* ===========================
    Responsividade
@@ -655,6 +746,11 @@ body.light-mode .edu-card {
   .header-inner {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .contador-box {
+    align-self: flex-start;
+    margin-top: 0.5rem;
   }
 
   .avatar {
