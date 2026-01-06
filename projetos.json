@@ -23,17 +23,17 @@
     "Objetivo": "Pedagógico",
     "Finalidade": "Ensinar lógica de programação com HTML, CSS e JS",
     "Linguagens": "HTML, CSS, JS",
-    "TecnicasUtilizadas": "Utilização de variáveis; Conceito aleatório; Utilização de imagens; Animação CSS",
+    "TecnicasUtilizadas": "Utilização de variáveis; Conceito aleatório; Utilização de imagens; Animação CSS; Responsividade",
     "Link": "https://github.com/ValterBercelli/JogoDeDados-2J2D.git"
   },
   {
-    "NomeDoProjeto": "JogoDeDados-2JRnk",
+    "NomeDoProjeto": "JogoDeDados-2J2DRnk",
     "DescricaoDoProjeto": "Jogo de dados",
     "Objetivo": "Pedagógico",
     "Finalidade": "Ensinar lógica de programação com HTML, CSS e JS",
     "Linguagens": "HTML, CSS, JS",
     "TecnicasUtilizadas": "Utilização de variáveis; Conceito aleatório; Utilização de imagens; Animação CSS; Persistencia em Local Storage",
-    "Link": "https://www.bercelli.com.br"
+    "Link": "https://github.com/ValterBercelli/JogoDeDados-2J2DRnk.git"
   },
   {
     "NomeDoProjeto": "JoKenPo",
