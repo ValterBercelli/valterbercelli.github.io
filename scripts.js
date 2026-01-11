@@ -118,14 +118,9 @@ let projetos = []; // cache dos dados
 
 async function carregarProjetos()
 {
- 
   if (window.location.pathname.includes("projetos.html"))
   {
-    const tabela = document.getElementById("tabelaProjetos");
-    if (!tabela) {
-      console.warn("Elemento #tabelaProjetos não encontrado.");
-      return;
-    }
+    return;
   }
 
   try {

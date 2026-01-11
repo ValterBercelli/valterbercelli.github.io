@@ -696,8 +696,160 @@ body.light-mode .contador-box {
   }
 }
 
+/* GRID DE PROJETOS */
+.grid-projetos {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  margin-top: 1rem;
+}
 
+/* Card dos projetos */
+.grid-projetos .card {
+  background-color: #1e1e1e;
+  border-radius: 10px;
+  padding: 1rem;
+  border: 1px solid #333;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
 
+body.light-mode .grid-projetos .card {
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+}
+
+.grid-projetos .card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+}
+
+/* Badges */
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: .5rem;
+}
+
+.badge {
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  background: #0b0f14;
+  border: 1px solid #444;
+  font-size: 0.75rem;
+  color: #ccc;
+}
+
+.badge.destaque {
+  background: #ffd700;
+  color: #000;
+  font-weight: bold;
+}
+
+/* ===========================
+   LINKS DOS CARDS DE PROJETOS
+   =========================== */
+
+.grid-projetos .card a {
+  display: inline-block;
+  margin-top: 0.4rem;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 0.35rem 0.6rem;
+  border-radius: 6px;
+  transition: 0.25s ease;
+}
+
+/* Modo escuro */
+body.dark-mode .grid-projetos .card a {
+  color: #ffd700;
+  background: rgba(255, 215, 0, 0.12);
+  border: 1px solid rgba(255, 215, 0, 0.35);
+}
+
+body.dark-mode .grid-projetos .card a:hover {
+  background: rgba(255, 215, 0, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.35);
+}
+
+/* Modo claro */
+body.light-mode .grid-projetos .card a {
+  color: #333;
+  background: #f5f5f5;
+  border: 1px solid #ccc;
+}
+
+body.light-mode .grid-projetos .card a:hover {
+  background: #e0e0e0;
+  transform: translateY(-2px);
+  box-shadow: 0 0 6px rgba(0,0,0,0.15);
+}
+
+/* ===========================
+   LINKS DOS CARDS — ALTURA IGUAL AO BADGE DESTAQUE
+   =========================== */
+
+.grid-projetos .card a {
+  display: inline-flex;          /* mesma lógica dos badges */
+  align-items: center;           /* centraliza verticalmente */
+  height: 28px;                  /* mesma altura visual do badge */
+  padding: 0 0.75rem;            /* igual ao badge destaque */
+  border-radius: 999px;          /* formato pílula igual ao badge */
+  font-size: 0.80rem;            /* mesmo tamanho do texto */
+  font-weight: bold;
+  text-decoration: none;
+  transition: 0.25s ease;
+}
+
+/* Modo escuro */
+body.dark-mode .grid-projetos .card a {
+  color: #000;
+  /*background: #ffd700;*/
+  background: #fff3a3;
+  border: 1px solid rgba(255, 215, 0, 0.45);
+}
+
+body.dark-mode .grid-projetos .card a:hover {
+  background: #ffe45c;
+  transform: translateY(-2px);
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.45);
+}
+
+/* Modo claro */
+body.light-mode .grid-projetos .card a {
+  color: #333;
+  background: #fff3a3;
+  border: 1px solid #e0c200;
+}
+
+body.light-mode .grid-projetos .card a:hover {
+  background: #ffe45c;
+  transform: translateY(-2px);
+  box-shadow: 0 0 6px rgba(0,0,0,0.15);
+}
+
+.filtros-projetos {
+  display: flex;
+  gap: 10px;
+  margin: 1rem 0;
+  flex-wrap: wrap;
+}
+
+.filtros-projetos input {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #666;
+  background: #1e1e1e;
+  color: #fff;
+}
+
+body.light-mode .filtros-projetos input {
+  background: #fff;
+  color: #333;
+  border: 1px solid #ccc;
+}
 
 /* ===========================
    Responsividade

@@ -1,54 +1,79 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bercelli - Projetos</title>
-    <link rel="shortcut icon" href="icons8-github-250.png" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body class="page-projetos">
-    <header class="site-header">
-      <div class="header-inner">
-        <div class="avatar-box">
-          <div class="avatar"></div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bercelli - Projetos</title>
+  <link rel="shortcut icon" href="icons8-github-250.png" type="image/x-icon">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="page-projetos">
+
+  <!-- HEADER ORIGINAL -->
+  <header class="site-header">
+    <div class="header-inner">
+
+      <div class="avatar-box">
+        <div class="avatar"></div>
+      </div>
+
+      <div class="title-nav">
+        <h1>Valter Bercelli</h1>
+        <p class="subtitle"><strong>Arquiteto/Analista de Sistemas</strong> • APIs • Automação</p>
+
+        <nav class="main-nav">
+          <a href="index.html" class="menuItem">Início</a>
+          <a href="projetos.html" class="menuItem active">Projetos</a>
+          <a href="contato.html" class="menuItem">Contato</a>
+        </nav>
+      </div>
+
+      <div class="theme-toggle-box">
+        <button id="toggle-theme" type="button">🌙 Modo escuro</button>
+      </div>
+
+      <div class="contador-box">
+        <div class="contador-item">
+          <span class="contador-label">Visitas..... :</span>
+          <span id="contador-total" class="contador-valor">--</span>
         </div>
-        <div class="title-nav">
-          <h1>Lista de Projetos</h1>
-          <nav class="main-nav">
-            <a href="index.html" class="menuItem">Início</a>
-            <a href="projetos.html" class="menuItem active">Projetos</a>
-            <a href="contato.html" class="menuItem">Contato</a>
-          </nav>
-        </div>
-        <div class="theme-toggle-box">
-          <button id="toggle-theme" type="button">🌙 Modo escuro</button>
+        <div class="contador-item">
+          <span class="contador-label">Suas Visitas :</span>
+          <span id="contador-usuario" class="contador-valor">--</span>
         </div>
       </div>
-    </header>
 
-    <main class="site-main">
-      <section class="card">
-        <h2>Projetos</h2>
-        <div class="filtros">
-          <input type="text" id="filtroNome" placeholder="Filtrar por nome do projeto" autocomplete="off"/>
-          <input type="text" id="filtroLinguagens" placeholder="Filtrar por linguagens" autocomplete="off"/>
-           <button id="btnLimparFiltros" class="btn-limpar">Limpar filtros 🧹</button>
-        </div>
-        <div class="tabela-container table-wrapper">
-          <table id="tabelaProjetos"></table>
-        </div>
-      </section>
+    </div>
+  </header>
 
-      <div class="actions">
-        <a href="index.html" class="btn-secondary">⬅ Voltar à página principal</a>
-      </div>
-    </main>
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main class="site-main">
 
-    <footer class="site-footer">
-      <p>© 2025 Valter Bercelli • <a href="mailto:bercelli@bercelli.com.br">Contato</a></p>
-    </footer>
+    <h2 class="titulo-secao">🔎 Filtros</h2>
 
-    <script src="scripts.js" defer></script>
-  </body>
+    <div class="filtros-projetos">
+      <input type="text" id="filtro-nome" placeholder="Buscar por nome...">
+      <input type="text" id="filtro-linguagem" placeholder="Buscar por linguagem...">
+      <button id="limpar-filtros" class="btn-primary">Limpar</button>
+    </div>
+
+    <h2 class="titulo-secao">⭐ Projetos em Destaque</h2>
+    <section id="lista-destaques" class="grid-projetos"></section>
+
+    <h2 class="titulo-secao">📁 Todos os Projetos</h2>
+    <p id="estado-carregamento" class="estado"></p>
+    <section id="lista-projetos" class="grid-projetos"></section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <p>© 2025 Valter Bercelli • <a href="mailto:bercelli@bercelli.com.br">Contato</a></p>
+  </footer>
+
+  <script src="scripts.js" defer></script>
+  <script src="script-projetos.js" defer></script>
+
+</body>
 </html>
